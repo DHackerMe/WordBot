@@ -1,8 +1,13 @@
+import os
+
 def find_words(letters):
     words_found = []
     letter_count = {letter: letters.count(letter) for letter in set(letters)}
     
-    with open('words.txt', 'r') as file:
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    file_path = os.path.join(current_dir, 'words.txt')
+    
+    with open(file_path, 'r') as file:
         for line in file:
             word = line.strip().lower()
             word_count = {letter: word.count(letter) for letter in set(word)}
